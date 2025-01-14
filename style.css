@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 50, 0.8));
+    overflow: hidden;
+    position: relative;
+    animation: backgroundMove 10s linear infinite;
+    transition: background 0.5s ease;
+}
+
+button#theme-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+button#theme-toggle.default:hover {
+    border-top: 2px solid blueviolet;
+    border-left: 2px solid blueviolet;
+    border-bottom: 2px solid rgb(238, 103, 238);
+    border-right: 2px solid rgb(238, 103, 238);
+    box-shadow: 
+        5px 5px rgba(240, 46, 170, 0.4),
+        10px 10px rgba(240, 46, 170, 0.3),
+        15px 15px rgba(240, 46, 170, 0.2);
+}
+
+button#theme-toggle.dark:hover {
+    border-top: 2px solid cyan;
+    border-left: 2px solid cyan;
+    border-bottom: 2px solid lightgreen;
+    border-right: 2px solid lightgreen;
+    box-shadow: 
+        5px 5px rgba(0, 255, 255, 0.4),
+        10px 10px rgba(0, 255, 255, 0.3),
+        15px 15px rgba(0, 255, 255, 0.2);
+}
+
+button#theme-toggle.neon:hover {
+    border-top: 2px solid yellow;
+    border-left: 2px solid yellow;
+    border-bottom: 2px solid pink;
+    border-right: 2px solid pink;
+    box-shadow: 
+        5px 5px rgba(255, 255, 0, 0.4),
+        10px 10px rgba(255, 255, 0, 0.3),
+        15px 15px rgba(255, 255, 0, 0.2);
+}
+
+.star {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+body.default {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 50, 0.8));
+}
+
+body.default .star {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+body.dark {
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(0, 0, 0, 0.8));
+}
+
+body.dark .star {
+    background: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+body.neon {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 0, 150, 0.8));
+}
+
+body.neon .star {
+    background: rgba(255, 255, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+}
+
+.container {
+    position: absolute;
+    top: 20%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.circle {
+    position: absolute;
+    background: transparent;
+    width: calc(var(--i) * 2.5vmin);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 3px solid rgb(0, 255, 13);
+    transform-style: preserve-3d;
+    transform: rotateX(70deg) translateZ(50px);
+    animation: animate 3s ease-in-out calc(var(--i) * 0.1s) infinite;
+    box-shadow: 0 0 15px rgb(124, 124, 124);
+    transition: border-color 0.3s ease;
+}
+
+@keyframes animate {
+    0%, 100% {
+        transform: rotateX(70deg) translateZ(50px) translateY(0) scale(1);
+        filter: hue-rotate(0);
+    }
+    50% {
+        transform: rotateX(70deg) translateZ(50px) translateY(-50vmin) scale(1.2);
+        filter: hue-rotate(360deg);
+    }
+}
